@@ -3,7 +3,8 @@
  * Communicates with the Express.js & PostgreSQL backend via native fetch.
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const rawBase = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace(/\/$/, '');
+const API_BASE_URL = rawBase.endsWith('/api') ? rawBase : `${rawBase}/api`;
 
 /**
  * Fetch all appointments from the backend (GET /api/appointments)
