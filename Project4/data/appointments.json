@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "patientName": "Rahul Sharma",
+    "age": 21,
+    "doctor": "Dr. Sarah Jenkins",
+    "appointmentDate": "2026-11-16",
+    "appointmentTime": "10:00 AM",
+    "reason": "Regular health checkup"
+  },
+  {
+    "id": 2,
+    "patientName": "Eleanor Vance",
+    "age": 38,
+    "doctor": "Dr. Rajesh Sharma",
+    "appointmentDate": "2026-11-18",
+    "appointmentTime": "11:30 AM",
+    "reason": "Follow-up consultation for hypertension and ECG review"
+  }
+]

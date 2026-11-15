@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediBook – Hospital Appointment Management System</title>
+  <meta name="description"
+    content="A professional, responsive Hospital Appointment Management System for clinical scheduling, doctor directories, and patient consultation tracking.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <!-- Main Application Wrapper -->
+  <div class="app-layout">
+
+    <!-- Sidebar Navigation -->
+    <aside id="app-sidebar" class="app-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <!-- Hospital Cross Icon SVG -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 4v16M4 12h16"></path>
+            <rect x="3" y="3" width="18" height="18" rx="4" stroke-width="1.8"></rect>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">MediBook</span>
+          <span class="brand-subtitle">Clinical Care Suite</span>
+        </div>
+        <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close Sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link active" data-section="dashboard" id="nav-dashboard">
+              <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <rect x="3" y="3" width="7" height="9" rx="1.5"></rect>
+                <rect x="14" y="3" width="7" height="5" rx="1.5"></rect>
+                <rect x="14" y="12" width="7" height="9" rx="1.5"></rect>
+                <rect x="3" y="16" width="7" height="5" rx="1.5"></rect>
+              </svg>
+              <span>Dashboard</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-section="doctors" id="nav-doctors">
+              <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>Doctors Directory</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-section="book" id="nav-book">
+              <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+                <line x1="12" y1="14" x2="12" y2="18"></line>
+                <line x1="10" y1="16" x2="14" y2="16"></line>
+              </svg>
+              <span>Book Appointment</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-section="appointments" id="nav-appointments">
+              <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>Manage Appointments</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Footer Card -->
+      <div class="sidebar-footer">
+        <div class="support-card">
+          <div class="support-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+              </path>
+            </svg>
+          </div>
+          <div class="support-details">
+            <span class="support-label">Emergency Helpline</span>
+            <span class="support-phone">1800-200-MEDI</span>
+          </div>
+        </div>
+        <div class="system-status">
+          <span class="status-indicator-dot"></span>
+          <span>MediBook v1.0 • Connected</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main">
+
+      <!-- Top Application Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <button id="sidebar-toggle-btn" class="sidebar-toggle-btn" aria-label="Toggle Sidebar Navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="header-breadcrumb">
+            <span class="breadcrumb-root">MediBook Hospital</span>
+            <span class="breadcrumb-separator">/</span>
+            <span id="page-title" class="breadcrumb-current">Dashboard</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-date-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span id="header-live-date">--</span>
+          </div>
+          <button class="btn btn-primary btn-sm btn-quick-book" id="header-book-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Book Appointment</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Body Container for Sections -->
+      <main class="content-body">
+
+        <!-- ========================================== -->
+        <!-- SECTION A: DASHBOARD -->
+        <!-- ========================================== -->
+        <section id="section-dashboard" class="content-section active">
+
+          <!-- Welcome Hero Banner -->
+          <div class="dashboard-hero">
+            <div class="hero-content">
+              <span class="hero-tag">Hospital Command Center</span>
+              <h1 class="hero-title" id="dashboard-welcome-title">Welcome to MediBook Clinical Portal</h1>
+              <p class="hero-subtitle">
+                Monitor live patient appointments, review operational schedules, and manage medical consultations across
+                departments.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="dash-quick-book-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Schedule Appointment</span>
+              </button>
+              <button class="btn btn-outline-white" id="dash-view-doctors-btn">
+                <span>View Doctors</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Statistics KPI Cards -->
+          <div class="stats-grid">
+            <!-- Total Appointments -->
+            <div class="stat-card stat-total">
+              <div class="stat-icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Total Appointments</span>
+                <span class="stat-value" id="stat-total">0</span>
+                <span class="stat-trend trend-neutral">All recorded patient bookings</span>
+              </div>
+            </div>
+
+            <!-- Scheduled Appointments -->
+            <div class="stat-card stat-scheduled">
+              <div class="stat-icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Scheduled</span>
+                <span class="stat-value" id="stat-scheduled">0</span>
+                <span class="stat-trend trend-info">Upcoming clinical visits</span>
+              </div>
+            </div>
+
+            <!-- Completed Appointments -->
+            <div class="stat-card stat-completed">
+              <div class="stat-icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Completed</span>
+                <span class="stat-value" id="stat-completed">0</span>
+                <span class="stat-trend trend-success">Successfully consulted</span>
+              </div>
+            </div>
+
+            <!-- Cancelled Appointments -->
+            <div class="stat-card stat-cancelled">
+              <div class="stat-icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Cancelled</span>
+                <span class="stat-value" id="stat-cancelled">0</span>
+                <span class="stat-trend trend-danger">Voided or rescheduled</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Secondary Content Grid -->
+          <div class="dashboard-columns">
+
+            <!-- Recent Appointments Card -->
+            <div class="card dash-appointments-card">
+              <div class="card-header">
+                <div class="card-header-title">
+                  <h2>Recent Bookings</h2>
+                  <p>Latest patient consultations scheduled in the system</p>
+                </div>
+                <button class="btn btn-ghost btn-sm" id="dash-view-all-appointments-btn">
+                  View All &rarr;
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="data-table" id="dash-recent-table">
+                    <thead>
+                      <tr>
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Date & Time</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dash-recent-tbody">
+                      <!-- Rendered dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Department & System Highlights Card -->
+            <div class="card dash-quick-info-card">
+              <div class="card-header">
+                <div class="card-header-title">
+                  <h2>Active Departments</h2>
+                  <p>Specialty clinics operational today</p>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="departments-list">
+                  <div class="department-item">
+                    <span class="dept-badge">Cardiology</span>
+                    <span class="dept-info">OPD-204 • Dr. Jenkins</span>
+                  </div>
+                  <div class="department-item">
+                    <span class="dept-badge">Neurology</span>
+                    <span class="dept-info">OPD-310 • Dr. Sharma</span>
+                  </div>
+                  <div class="department-item">
+                    <span class="dept-badge">Pediatrics</span>
+                    <span class="dept-info">OPD-105 • Dr. Nair</span>
+                  </div>
+                  <div class="department-item">
+                    <span class="dept-badge">Orthopedics</span>
+                    <span class="dept-info">OPD-218 • Dr. Chang</span>
+                  </div>
+                  <div class="department-item">
+                    <span class="dept-badge">General Medicine</span>
+                    <span class="dept-info">OPD-101 • Dr. Martinez</span>
+                  </div>
+                </div>
+
+                <div class="hospital-notice-box">
+                  <div class="notice-header">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <strong>Clinical Notice</strong>
+                  </div>
+                  <p>
+                    Please arrive 15 minutes before the scheduled time slot for initial vitals screening and token
+                    verification.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION B: DOCTOR LISTING -->
+        <!-- ========================================== -->
+        <section id="section-doctors" class="content-section">
+
+          <div class="section-heading">
+            <div class="heading-text">
+              <h1>Doctors Directory</h1>
+              <p>Explore our team of verified medical practitioners, specialists, and clinical consultants.</p>
+            </div>
+            <span class="badge badge-light" id="doctors-count-badge">Loading specialists...</span>
+          </div>
+
+          <!-- Doctor Filter and Search Bar -->
+          <div class="filter-bar card">
+            <div class="filter-group filter-search">
+              <label for="doctor-search-input" class="sr-only">Search Doctors</label>
+              <div class="search-input-wrapper">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="doctor-search-input" class="form-control"
+                  placeholder="Search doctor by name, qualification, or department...">
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <label for="doctor-specialization-filter" class="filter-label">Specialization:</label>
+              <select id="doctor-specialization-filter" class="form-select">
+                <option value="all">All Specializations</option>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+
+            <button id="doctor-reset-btn" class="btn btn-secondary btn-icon" title="Reset Filters">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+              </svg>
+              <span>Reset</span>
+            </button>
+          </div>
+
+          <!-- Loading Skeleton -->
+          <div id="doctors-loading" class="state-container loading-state">
+            <div class="spinner"></div>
+            <p>Loading medical practitioners from database...</p>
+          </div>
+
+          <!-- Error Alert -->
+          <div id="doctors-error" class="state-container error-state hidden">
+            <div class="error-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h3>Unable to load doctor information</h3>
+            <p id="doctors-error-message">A network error occurred while fetching doctors.json.</p>
+            <button id="doctors-retry-btn" class="btn btn-primary btn-sm">Try Again</button>
+          </div>
+
+          <!-- Doctors Grid Container -->
+          <div id="doctors-grid" class="doctors-grid">
+            <!-- Doctor Cards Rendered Dynamically -->
+          </div>
+
+          <!-- Empty State for Search -->
+          <div id="doctors-empty-state" class="state-container empty-state hidden">
+            <div class="empty-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <h3>No doctors found</h3>
+            <p>No specialists match your search criteria. Try modifying your search or resetting the filter.</p>
+            <button class="btn btn-secondary btn-sm" id="doctor-empty-reset-btn">Reset Filters</button>
+          </div>
+
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION C: BOOK APPOINTMENT -->
+        <!-- ========================================== -->
+        <section id="section-book" class="content-section">
+
+          <div class="section-heading">
+            <div class="heading-text">
+              <h1>Book a Medical Consultation</h1>
+              <p>Fill out the patient and clinical details below to schedule an appointment with a specialist.</p>
+            </div>
+          </div>
+
+          <div class="booking-layout">
+
+            <!-- Booking Form Card -->
+            <div class="card booking-form-card">
+              <div class="card-header">
+                <div class="card-header-title">
+                  <h2>Appointment Registration Form</h2>
+                  <p>All fields marked with an asterisk (<span class="required">*</span>) are mandatory.</p>
+                </div>
+              </div>
+
+              <div class="card-body">
+                <form id="appointment-form" novalidate>
+
+                  <!-- Form Row 1: Patient Name & Age -->
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="patient-name" class="form-label">
+                        Patient Full Name <span class="required">*</span>
+                      </label>
+                      <input type="text" id="patient-name" name="patientName" class="form-control"
+                        placeholder="e.g. Eleanor Vance" autocomplete="name">
+                      <div class="field-error" id="error-patient-name" role="alert"></div>
+                    </div>
+
+                    <div class="form-group form-group-sm">
+                      <label for="patient-age" class="form-label">
+                        Age (Years) <span class="required">*</span>
+                      </label>
+                      <input type="number" id="patient-age" name="age" class="form-control" placeholder="e.g. 32"
+                        min="1" max="120">
+                      <div class="field-error" id="error-patient-age" role="alert"></div>
+                    </div>
+                  </div>
+
+                  <!-- Form Row 2: Email & Phone -->
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="patient-email" class="form-label">
+                        Email Address <span class="required">*</span>
+                      </label>
+                      <input type="email" id="patient-email" name="email" class="form-control"
+                        placeholder="patient@example.com" autocomplete="email">
+                      <div class="field-error" id="error-patient-email" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="patient-phone" class="form-label">
+                        10-Digit Mobile Number <span class="required">*</span>
+                      </label>
+                      <div class="phone-input-group">
+                        <span class="phone-prefix">+91</span>
+                        <input type="tel" id="patient-phone" name="phone" class="form-control" placeholder="9876543210"
+                          maxlength="10" autocomplete="tel">
+                      </div>
+                      <div class="field-error" id="error-patient-phone" role="alert"></div>
+                    </div>
+                  </div>
+
+                  <!-- Form Row 3: Doctor Selection -->
+                  <div class="form-group">
+                    <label for="appointment-doctor" class="form-label">
+                      Select Doctor & Specialization <span class="required">*</span>
+                    </label>
+                    <select id="appointment-doctor" name="doctorId" class="form-select">
+                      <option value="">-- Choose a Consulting Doctor --</option>
+                      <!-- Options populated dynamically from doctors.json -->
+                    </select>
+                    <div class="field-error" id="error-appointment-doctor" role="alert"></div>
+
+                    <!-- Quick Doctor Brief Widget shown when selected -->
+                    <div id="selected-doctor-preview" class="doctor-quick-preview hidden">
+                      <div class="preview-avatar" id="prev-doc-avatar">MD</div>
+                      <div class="preview-details">
+                        <div class="prev-name" id="prev-doc-name">Dr. Name</div>
+                        <div class="prev-sub" id="prev-doc-sub">Specialty • OPD Room</div>
+                        <div class="prev-timing" id="prev-doc-timing">Timing</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Form Row 4: Date & Time Slot -->
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="appointment-date" class="form-label">
+                        Appointment Date <span class="required">*</span>
+                      </label>
+                      <input type="date" id="appointment-date" name="appointmentDate" class="form-control">
+                      <div class="field-error" id="error-appointment-date" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="appointment-time" class="form-label">
+                        Appointment Time Slot <span class="required">*</span>
+                      </label>
+                      <select id="appointment-time" name="appointmentTime" class="form-select">
+                        <option value="">-- Select Time Slot --</option>
+                        <option value="09:00 AM">09:00 AM - 09:30 AM</option>
+                        <option value="09:30 AM">09:30 AM - 10:00 AM</option>
+                        <option value="10:00 AM">10:00 AM - 10:30 AM</option>
+                        <option value="10:30 AM">10:30 AM - 11:00 AM</option>
+                        <option value="11:00 AM">11:00 AM - 11:30 AM</option>
+                        <option value="11:30 AM">11:30 AM - 12:00 PM</option>
+                        <option value="12:00 PM">12:00 PM - 12:30 PM</option>
+                        <option value="02:00 PM">02:00 PM - 02:30 PM</option>
+                        <option value="02:30 PM">02:30 PM - 03:00 PM</option>
+                        <option value="03:00 PM">03:00 PM - 03:30 PM</option>
+                        <option value="03:30 PM">03:30 PM - 04:00 PM</option>
+                        <option value="04:00 PM">04:00 PM - 04:30 PM</option>
+                        <option value="04:30 PM">04:30 PM - 05:00 PM</option>
+                        <option value="05:00 PM">05:00 PM - 05:30 PM</option>
+                      </select>
+                      <div class="field-error" id="error-appointment-time" role="alert"></div>
+                    </div>
+                  </div>
+
+                  <!-- Form Row 5: Reason for Appointment -->
+                  <div class="form-group">
+                    <label for="appointment-reason" class="form-label">
+                      Reason for Consultation <span class="required">*</span>
+                    </label>
+                    <textarea id="appointment-reason" name="reason" rows="3" class="form-control"
+                      placeholder="Briefly describe the primary symptoms, health concerns, or follow-up notes (min 5 characters)..."></textarea>
+                    <div class="field-error" id="error-appointment-reason" role="alert"></div>
+                  </div>
+
+                  <!-- Form Action Buttons -->
+                  <div class="form-actions">
+                    <button type="submit" id="book-submit-btn" class="btn btn-primary btn-lg">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Confirm Appointment</span>
+                    </button>
+                    <button type="button" id="book-reset-btn" class="btn btn-secondary btn-lg">
+                      <span>Clear Form</span>
+                    </button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+
+            <!-- Booking Information & Policy Aside -->
+            <div class="booking-sidebar-info">
+
+              <div class="card info-card">
+                <div class="card-header">
+                  <div class="card-header-title">
+                    <h3>Booking Guidelines</h3>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <ul class="guidelines-list">
+                    <li>
+                      <div class="guide-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span>Past dates cannot be selected. You may book appointments for today or future dates.</span>
+                    </li>
+                    <li>
+                      <div class="guide-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span>Please ensure a valid 10-digit mobile number for appointment SMS confirmation tokens.</span>
+                    </li>
+                    <li>
+                      <div class="guide-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span>Consultations can be rescheduled or cancelled anytime through the Appointment Management
+                        panel.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card info-card hospital-contacts-card">
+                <div class="card-header">
+                  <div class="card-header-title">
+                    <h3>OPD Helpdesk</h3>
+                  </div>
+                </div>
+                <div class="card-body helpdesk-body">
+                  <p><strong>Timings:</strong> Mon - Sat: 08:00 AM - 08:00 PM</p>
+                  <p><strong>Direct Line:</strong> +91 11 2345 6789</p>
+                  <p><strong>Email:</strong> opd-desk@medibook.org</p>
+                  <div class="badge-pill">Central Campus, Block A, Ground Floor</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION D: APPOINTMENT MANAGEMENT -->
+        <!-- ========================================== -->
+        <section id="section-appointments" class="content-section">
+
+          <div class="section-heading">
+            <div class="heading-text">
+              <h1>Appointment Management</h1>
+              <p>Review, filter, update, or cancel registered patient consultations.</p>
+            </div>
+            <div class="heading-actions">
+              <span class="badge badge-light" id="appointments-count-badge">0 appointments</span>
+              <button class="btn btn-primary btn-sm" id="mgmt-book-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>New Appointment</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Appointments Control Bar -->
+          <div class="filter-bar card">
+
+            <!-- Search by Patient or Doctor -->
+            <div class="filter-group filter-search">
+              <label for="appointments-search-input" class="sr-only">Search Appointments</label>
+              <div class="search-input-wrapper">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="appointments-search-input" class="form-control"
+                  placeholder="Search by patient name or doctor name...">
+              </div>
+            </div>
+
+            <!-- Status Filter -->
+            <div class="filter-group">
+              <label for="appointments-status-filter" class="filter-label">Status:</label>
+              <select id="appointments-status-filter" class="form-select">
+                <option value="all">All Statuses</option>
+                <option value="Scheduled">Scheduled</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </div>
+
+            <!-- Sort Option -->
+            <div class="filter-group">
+              <label for="appointments-sort-select" class="filter-label">Sort By:</label>
+              <select id="appointments-sort-select" class="form-select">
+                <option value="date-asc">Date: Earliest First</option>
+                <option value="date-desc">Date: Latest First</option>
+                <option value="name-asc">Patient Name: A - Z</option>
+                <option value="name-desc">Patient Name: Z - A</option>
+                <option value="status">Status</option>
+              </select>
+            </div>
+
+            <button id="appointments-reset-btn" class="btn btn-secondary btn-icon" title="Reset Filters">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+              </svg>
+              <span>Reset</span>
+            </button>
+          </div>
+
+          <!-- Appointments Table Card -->
+          <div class="card appointments-table-card">
+            <div class="table-responsive">
+              <table class="data-table" id="appointments-table">
+                <thead>
+                  <tr>
+                    <th>Ref #</th>
+                    <th>Patient Details</th>
+                    <th>Doctor & Specialty</th>
+                    <th>Date & Slot</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="appointments-tbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Empty State when table is empty -->
+            <div id="appointments-empty-state" class="state-container empty-state hidden">
+              <div class="empty-icon">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <h3 id="empty-state-title">No appointments found</h3>
+              <p id="empty-state-desc">There are no records matching your current search or filter query.</p>
+              <button class="btn btn-primary btn-sm" id="empty-book-action-btn">Book an Appointment</button>
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODALS -->
+  <!-- ========================================== -->
+
+  <!-- 1. View Appointment Details Modal -->
+  <div id="view-modal" class="modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <h3 class="modal-title">Appointment Summary</h3>
+            <span class="modal-subtitle" id="view-token-id">APT-000000</span>
+          </div>
+          <button class="modal-close-btn" id="view-modal-close" aria-label="Close Modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="detail-status-banner" id="view-status-banner">
+            <span class="banner-status-label">Current Status:</span>
+            <span class="badge" id="view-status-badge">Scheduled</span>
+          </div>
+
+          <div class="detail-section">
+            <h4 class="detail-heading">Patient Information</h4>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <span class="detail-label">Full Name</span>
+                <span class="detail-value" id="view-patient-name">--</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Age</span>
+                <span class="detail-value" id="view-patient-age">--</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Contact Number</span>
+                <span class="detail-value" id="view-patient-phone">--</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Email Address</span>
+                <span class="detail-value" id="view-patient-email">--</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h4 class="detail-heading">Consultation Details</h4>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <span class="detail-label">Consulting Doctor</span>
+                <span class="detail-value" id="view-doctor-name">--</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Department</span>
+                <span class="detail-value" id="view-doctor-dept">--</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Appointment Date</span>
+                <span class="detail-value" id="view-appointment-date">--</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Time Slot</span>
+                <span class="detail-value" id="view-appointment-time">--</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h4 class="detail-heading">Reason for Visit</h4>
+            <p class="detail-reason-box" id="view-appointment-reason">--</p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="view-modal-done">Close</button>
+          <button class="btn btn-primary" id="view-modal-edit-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+            <span>Edit Details</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Edit Appointment Modal -->
+  <div id="edit-modal" class="modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <h3 class="modal-title">Edit Appointment</h3>
+            <span class="modal-subtitle" id="edit-token-id">APT-000000</span>
+          </div>
+          <button class="modal-close-btn" id="edit-modal-close" aria-label="Close Modal">&times;</button>
+        </div>
+
+        <form id="edit-appointment-form" novalidate>
+          <input type="hidden" id="edit-appointment-id">
+
+          <div class="modal-body">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="edit-patient-name" class="form-label">Patient Name <span class="required">*</span></label>
+                <input type="text" id="edit-patient-name" class="form-control">
+                <div class="field-error" id="error-edit-patient-name"></div>
+              </div>
+              <div class="form-group form-group-sm">
+                <label for="edit-patient-age" class="form-label">Age <span class="required">*</span></label>
+                <input type="number" id="edit-patient-age" class="form-control" min="1" max="120">
+                <div class="field-error" id="error-edit-patient-age"></div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="edit-patient-email" class="form-label">Email Address <span class="required">*</span></label>
+                <input type="email" id="edit-patient-email" class="form-control">
+                <div class="field-error" id="error-edit-patient-email"></div>
+              </div>
+              <div class="form-group">
+                <label for="edit-patient-phone" class="form-label">Mobile Number <span class="required">*</span></label>
+                <input type="tel" id="edit-patient-phone" class="form-control" maxlength="10">
+                <div class="field-error" id="error-edit-patient-phone"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-appointment-doctor" class="form-label">Doctor <span class="required">*</span></label>
+              <select id="edit-appointment-doctor" class="form-select">
+                <!-- Dynamically populated -->
+              </select>
+              <div class="field-error" id="error-edit-appointment-doctor"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="edit-appointment-date" class="form-label">Date <span class="required">*</span></label>
+                <input type="date" id="edit-appointment-date" class="form-control">
+                <div class="field-error" id="error-edit-appointment-date"></div>
+              </div>
+              <div class="form-group">
+                <label for="edit-appointment-time" class="form-label">Time Slot <span class="required">*</span></label>
+                <select id="edit-appointment-time" class="form-select">
+                  <option value="09:00 AM">09:00 AM - 09:30 AM</option>
+                  <option value="09:30 AM">09:30 AM - 10:00 AM</option>
+                  <option value="10:00 AM">10:00 AM - 10:30 AM</option>
+                  <option value="10:30 AM">10:30 AM - 11:00 AM</option>
+                  <option value="11:00 AM">11:00 AM - 11:30 AM</option>
+                  <option value="11:30 AM">11:30 AM - 12:00 PM</option>
+                  <option value="12:00 PM">12:00 PM - 12:30 PM</option>
+                  <option value="02:00 PM">02:00 PM - 02:30 PM</option>
+                  <option value="02:30 PM">02:30 PM - 03:00 PM</option>
+                  <option value="03:00 PM">03:00 PM - 03:30 PM</option>
+                  <option value="03:30 PM">03:30 PM - 04:00 PM</option>
+                  <option value="04:00 PM">04:00 PM - 04:30 PM</option>
+                  <option value="04:30 PM">04:30 PM - 05:00 PM</option>
+                  <option value="05:00 PM">05:00 PM - 05:30 PM</option>
+                </select>
+                <div class="field-error" id="error-edit-appointment-time"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-appointment-status" class="form-label">Appointment Status <span
+                  class="required">*</span></label>
+              <select id="edit-appointment-status" class="form-select">
+                <option value="Scheduled">Scheduled</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-appointment-reason" class="form-label">Reason for Visit <span
+                  class="required">*</span></label>
+              <textarea id="edit-appointment-reason" rows="3" class="form-control"></textarea>
+              <div class="field-error" id="error-edit-appointment-reason"></div>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="edit-modal-cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="edit-modal-save-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Save Changes</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Delete Confirmation Modal -->
+  <div id="delete-modal" class="modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Delete Appointment</h3>
+          <button class="modal-close-btn" id="delete-modal-close" aria-label="Close Modal">&times;</button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="delete-warning-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              <line x1="10" y1="11" x2="10" y2="17"></line>
+              <line x1="14" y1="11" x2="14" y2="17"></line>
+            </svg>
+          </div>
+          <h4>Confirm Removal</h4>
+          <p>
+            Are you sure you want to permanently delete appointment record <strong
+              id="delete-target-id">APT-000000</strong> for <strong id="delete-target-patient">Patient</strong>?
+          </p>
+          <p class="text-muted small">This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer justify-center">
+          <button class="btn btn-secondary" id="delete-modal-cancel">Cancel</button>
+          <button class="btn btn-danger" id="delete-modal-confirm">Delete Permanently</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/doctors.js"></script>
+  <script src="js/appointments.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

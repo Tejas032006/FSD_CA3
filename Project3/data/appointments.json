@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "patientName": "Rahul Sharma",
+    "age": 21,
+    "doctor": "Dr. Sarah Jenkins",
+    "appointmentDate": "2026-11-16",
+    "appointmentTime": "10:00 AM",
+    "reason": "Regular health checkup"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "name": "medibook-server-utility",
+  "version": "1.0.0",
+  "description": "MediBook Hospital Appointment Management Server-Side Utility using native Node.js HTTP, File System, Path, and Streams",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "http-server",
+    "fs",
+    "path",
+    "streams",
+    "hospital-appointments"
+  ],
+  "author": "MediBook Team",
+  "license": "ISC"
+}

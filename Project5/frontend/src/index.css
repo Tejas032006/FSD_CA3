@@ -1,0 +1,116 @@
+/* ==========================================================================
+   MEDIBOOK – GLOBAL STYLES (index.css)
+   Healthcare SaaS Design System: Navy Blue, Sky Blue & White
+   ========================================================================== */
+
+:root {
+  /* Brand Navy & Blue Palette */
+  --primary-navy: #0c2340;
+  --primary-navy-dark: #07162c;
+  --primary-navy-light: #16365c;
+  --primary-blue: #0284c7;
+  --primary-blue-hover: #0369a1;
+  --primary-blue-light: #e0f2fe;
+  --primary-blue-subtle: #f0f7ff;
+  --accent-cyan: #06b6d4;
+
+  /* Neutrals & Surfaces */
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #f1f5f9;
+  --border-color: #e2e8f0;
+  --border-subtle: #cbd5e1;
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Status Colors */
+  --status-scheduled-text: #0369a1;
+  --status-scheduled-bg: #e0f2fe;
+  --status-scheduled-border: #bae6fd;
+
+  --status-completed-text: #15803d;
+  --status-completed-bg: #dcfce7;
+  --status-completed-border: #bbf7d0;
+
+  --status-cancelled-text: #b91c1c;
+  --status-cancelled-bg: #fee2e2;
+  --status-cancelled-border: #fecaca;
+
+  /* Feedback Colors */
+  --color-danger: #dc2626;
+  --color-danger-hover: #b91c1c;
+  --color-danger-light: #fef2f2;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --header-height: 70px;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-blue-hover);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
