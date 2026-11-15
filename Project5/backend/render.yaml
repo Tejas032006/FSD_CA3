@@ -24,4 +24,4 @@ databases:
     region: singapore
     plan: free
     databaseName: medibook_db
-    user: postgres
+    user: medibook_app
